@@ -1,0 +1,10 @@
+*.db
+.DS_Store
+.idea
+*.sublime-project
+*.sublime-workspace
+archive
+
+# Vim swap files
+.*.sw[a-z]
+
