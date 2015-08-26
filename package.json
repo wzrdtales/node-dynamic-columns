@@ -1,0 +1,28 @@
+{
+  "name": "dyncol",
+  "version": "1.0.0",
+  "description": "A tool to convert JSON schemas to dynamic column queries (like the ones from MariaDB)",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wzrdtales/node-dynamic-columns.git"
+  },
+  "keywords": [
+    "dyncol",
+    "dynamic",
+    "columns",
+    "maria",
+    "mariasql",
+    "mariadb",
+    "sql"
+  ],
+  "author": "Tobias Gurtzick <magic@wizardtales.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wzrdtales/node-dynamic-columns/issues"
+  },
+  "homepage": "https://github.com/wzrdtales/node-dynamic-columns#readme"
+}
