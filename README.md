@@ -28,6 +28,8 @@ and everything else as string.
 If you need or want to specify the types, you can set the second parameter to
 call the type defined variant instead.
 
+Also please note currently the typeSpecification is **not** supported **yet**.
+
 ## createQuery: ( json, typeSpecification )
 
 A non recursive way to resolve our json schema to the create query.
@@ -173,12 +175,12 @@ COLUMN_ADD (
 	'test',
 	'arrayone',
 	COLUMN_ADD (
-		COLUMN_GET (`test`, 'arrayone' AS CHAR),
+		COLUMN_GET (`test`, 'arrayone' AS BLOB),
 		'arr',
 		COLUMN_ADD (
 			COLUMN_GET (
-				COLUMN_GET (`test`, 'arrayone' AS CHAR),
-				'arr' AS CHAR
+				COLUMN_GET (`test`, 'arrayone' AS BLOB),
+				'arr' AS BLOB
 			),
 			'0',
 			'arr',
@@ -188,10 +190,10 @@ COLUMN_ADD (
 			COLUMN_ADD (
 				COLUMN_GET (
 					COLUMN_GET (
-						COLUMN_GET (`test`, 'arrayone' AS CHAR),
-						'arr' AS CHAR
+						COLUMN_GET (`test`, 'arrayone' AS BLOB),
+						'arr' AS BLOB
 					),
-					'2' AS CHAR
+					'2' AS BLOB
 				),
 				'yay',
 				'ditworks'
@@ -200,20 +202,20 @@ COLUMN_ADD (
 	),
 	'another',
 	COLUMN_ADD (
-		COLUMN_GET (`test`, 'another' AS CHAR),
+		COLUMN_GET (`test`, 'another' AS BLOB),
 		'one',
 		'yey another one!'
 	),
 	'qr',
 	COLUMN_ADD (
-		COLUMN_GET (`test`, 'qr' AS CHAR),
+		COLUMN_GET (`test`, 'qr' AS BLOB),
 		'test',
 		'tester',
 		'rofl',
 		COLUMN_ADD (
 			COLUMN_GET (
-				COLUMN_GET (`test`, 'qr' AS CHAR),
-				'rofl' AS CHAR
+				COLUMN_GET (`test`, 'qr' AS BLOB),
+				'rofl' AS BLOB
 			),
 			'jaja',
 			'neinnein',
@@ -221,10 +223,10 @@ COLUMN_ADD (
 			COLUMN_ADD (
 				COLUMN_GET (
 					COLUMN_GET (
-						COLUMN_GET (`test`, 'qr' AS CHAR),
-						'rofl' AS CHAR
+						COLUMN_GET (`test`, 'qr' AS BLOB),
+						'rofl' AS BLOB
 					),
-					'testagain' AS CHAR
+					'testagain' AS BLOB
 				),
 				'yip',
 				'datworks'
@@ -233,3 +235,28 @@ COLUMN_ADD (
 	)
 )
 ```
+
+## License
+
+(The MIT License)
+
+Copyright (c) 2015 Tobias Gurtzick
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
