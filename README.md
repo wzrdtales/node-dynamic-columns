@@ -119,25 +119,31 @@ COLUMN_CREATE (
 	'test',
 	'test',
 	'arrayone',
-	COLUMN_CREAT
-),
- 'arr',
- COLUMN_CREATE (
-	'0',
-	'arr',
-	'1',
-	'imma pirate'
-),
- '2',
- COLUMN_CREATE ('yay', 'ditworks'),
- 'another',
- COLUMN_CREATE ('one', 'yey another one!'),
- 'qr',
- COLUMN_CREATE ('test', 'tester'),
- 'rofl',
- COLUMN_CREATE ('jaja', 'neinnein'),
- 'testagain',
- COLUMN_CREATE ('yip', 'datworks')
+	COLUMN_CREATE (
+		'arr',
+		COLUMN_CREATE (
+			'0',
+			'arr',
+			'1',
+			'imma pirate',
+			'2',
+			COLUMN_CREATE ('yay', 'ditworks')
+		)
+	),
+	'another',
+	COLUMN_CREATE ('one', 'yey another one!'),
+	'qr',
+	COLUMN_CREATE (
+		'test',
+		'tester',
+		'rofl',
+		COLUMN_CREATE (
+			'jaja',
+			'neinnein',
+			'testagain',
+			COLUMN_CREATE ('yip', 'datworks')
+		)
+	)
 )
 ```
 
@@ -170,16 +176,16 @@ test.updateQuery( 'test', {
 
 ```SQL
 COLUMN_ADD (
-	`test`,
+	`@tmp`,
 	'test',
 	'test',
 	'arrayone',
 	COLUMN_ADD (
-		COLUMN_GET (`test`, 'arrayone' AS BLOB),
+		COLUMN_GET (`@tmp`, 'arrayone' AS BLOB),
 		'arr',
 		COLUMN_ADD (
 			COLUMN_GET (
-				COLUMN_GET (`test`, 'arrayone' AS BLOB),
+				COLUMN_GET (`@tmp`, 'arrayone' AS BLOB),
 				'arr' AS BLOB
 			),
 			'0',
@@ -190,7 +196,7 @@ COLUMN_ADD (
 			COLUMN_ADD (
 				COLUMN_GET (
 					COLUMN_GET (
-						COLUMN_GET (`test`, 'arrayone' AS BLOB),
+						COLUMN_GET (`@tmp`, 'arrayone' AS BLOB),
 						'arr' AS BLOB
 					),
 					'2' AS BLOB
@@ -202,19 +208,19 @@ COLUMN_ADD (
 	),
 	'another',
 	COLUMN_ADD (
-		COLUMN_GET (`test`, 'another' AS BLOB),
+		COLUMN_GET (`@tmp`, 'another' AS BLOB),
 		'one',
 		'yey another one!'
 	),
 	'qr',
 	COLUMN_ADD (
-		COLUMN_GET (`test`, 'qr' AS BLOB),
+		COLUMN_GET (`@tmp`, 'qr' AS BLOB),
 		'test',
 		'tester',
 		'rofl',
 		COLUMN_ADD (
 			COLUMN_GET (
-				COLUMN_GET (`test`, 'qr' AS BLOB),
+				COLUMN_GET (`@tmp`, 'qr' AS BLOB),
 				'rofl' AS BLOB
 			),
 			'jaja',
@@ -223,7 +229,7 @@ COLUMN_ADD (
 			COLUMN_ADD (
 				COLUMN_GET (
 					COLUMN_GET (
-						COLUMN_GET (`test`, 'qr' AS BLOB),
+						COLUMN_GET (`@tmp`, 'qr' AS BLOB),
 						'rofl' AS BLOB
 					),
 					'testagain' AS BLOB
