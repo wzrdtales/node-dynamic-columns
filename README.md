@@ -150,7 +150,7 @@ COLUMN_CREATE (
 ## JSON update Input
 
 ```javascript
-test.updateQuery( 'test', {
+test.updateQuery( 'example', {
   test: 'test',
   qr: {
     test: 'tester',
@@ -176,16 +176,16 @@ test.updateQuery( 'test', {
 
 ```SQL
 COLUMN_ADD (
-	`@tmp`,
+	`example`,
 	'test',
 	'test',
 	'arrayone',
 	COLUMN_ADD (
-		COLUMN_GET (`@tmp`, 'arrayone' AS BLOB),
+		COLUMN_GET (`example`, 'arrayone' AS BLOB),
 		'arr',
 		COLUMN_ADD (
 			COLUMN_GET (
-				COLUMN_GET (`@tmp`, 'arrayone' AS BLOB),
+				COLUMN_GET (`example`, 'arrayone' AS BLOB),
 				'arr' AS BLOB
 			),
 			'0',
@@ -196,7 +196,7 @@ COLUMN_ADD (
 			COLUMN_ADD (
 				COLUMN_GET (
 					COLUMN_GET (
-						COLUMN_GET (`@tmp`, 'arrayone' AS BLOB),
+						COLUMN_GET (`example`, 'arrayone' AS BLOB),
 						'arr' AS BLOB
 					),
 					'2' AS BLOB
@@ -208,19 +208,19 @@ COLUMN_ADD (
 	),
 	'another',
 	COLUMN_ADD (
-		COLUMN_GET (`@tmp`, 'another' AS BLOB),
+		COLUMN_GET (`example`, 'another' AS BLOB),
 		'one',
 		'yey another one!'
 	),
 	'qr',
 	COLUMN_ADD (
-		COLUMN_GET (`@tmp`, 'qr' AS BLOB),
+		COLUMN_GET (`example`, 'qr' AS BLOB),
 		'test',
 		'tester',
 		'rofl',
 		COLUMN_ADD (
 			COLUMN_GET (
-				COLUMN_GET (`@tmp`, 'qr' AS BLOB),
+				COLUMN_GET (`example`, 'qr' AS BLOB),
 				'rofl' AS BLOB
 			),
 			'jaja',
@@ -229,7 +229,7 @@ COLUMN_ADD (
 			COLUMN_ADD (
 				COLUMN_GET (
 					COLUMN_GET (
-						COLUMN_GET (`@tmp`, 'qr' AS BLOB),
+						COLUMN_GET (`example`, 'qr' AS BLOB),
 						'rofl' AS BLOB
 					),
 					'testagain' AS BLOB
