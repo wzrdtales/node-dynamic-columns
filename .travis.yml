@@ -1,3 +1,5 @@
+language: node_js
+
 node_js:
   - 0.10
   - 0.12
@@ -5,4 +7,3 @@ node_js:
   - "iojs-2"
   - "iojs-3"
   - "iojs"
-  

@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/wzrdtales/node-dynamic-columns.svg?branch=master)](https://travis-ci.org/wzrdtales/node-dynamic-columns)
+[![Dependency Status](https://david-dm.org/wzrdtales/node-dynamic-columns.svg)](https://david-dm.org/wzrdtales/node-dynamic-columns)
+[![devDependency Status](https://david-dm.org/wzrdtales/node-dynamic-columns/dev-status.svg)](https://david-dm.org/wzrdtales/node-dynamic-columns#info=devDependencies)
+
 # Dynamic Columns Helper
 
 This library provides functionality to convert a JSON schema into a SQL
