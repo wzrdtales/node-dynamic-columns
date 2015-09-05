@@ -185,12 +185,12 @@ COLUMN_ADD (
 	'test',
 	'arrayone',
 	COLUMN_ADD (
-		COLUMN_GET (`example`, 'arrayone' AS BLOB),
+		COLUMN_GET (`example`, 'arrayone' AS CHAR),
 		'arr',
 		COLUMN_ADD (
 			COLUMN_GET (
-				COLUMN_GET (`example`, 'arrayone' AS BLOB),
-				'arr' AS BLOB
+				COLUMN_GET (`example`, 'arrayone' AS CHAR),
+				'arr' AS CHAR
 			),
 			'0',
 			'arr',
@@ -200,10 +200,10 @@ COLUMN_ADD (
 			COLUMN_ADD (
 				COLUMN_GET (
 					COLUMN_GET (
-						COLUMN_GET (`example`, 'arrayone' AS BLOB),
-						'arr' AS BLOB
+						COLUMN_GET (`example`, 'arrayone' AS CHAR),
+						'arr' AS CHAR
 					),
-					'2' AS BLOB
+					'2' AS CHAR
 				),
 				'yay',
 				'ditworks'
@@ -212,20 +212,20 @@ COLUMN_ADD (
 	),
 	'another',
 	COLUMN_ADD (
-		COLUMN_GET (`example`, 'another' AS BLOB),
+		COLUMN_GET (`example`, 'another' AS CHAR),
 		'one',
 		'yey another one!'
 	),
 	'qr',
 	COLUMN_ADD (
-		COLUMN_GET (`example`, 'qr' AS BLOB),
+		COLUMN_GET (`example`, 'qr' AS CHAR),
 		'test',
 		'tester',
 		'rofl',
 		COLUMN_ADD (
 			COLUMN_GET (
-				COLUMN_GET (`example`, 'qr' AS BLOB),
-				'rofl' AS BLOB
+				COLUMN_GET (`example`, 'qr' AS CHAR),
+				'rofl' AS CHAR
 			),
 			'jaja',
 			'neinnein',
@@ -233,10 +233,10 @@ COLUMN_ADD (
 			COLUMN_ADD (
 				COLUMN_GET (
 					COLUMN_GET (
-						COLUMN_GET (`example`, 'qr' AS BLOB),
-						'rofl' AS BLOB
+						COLUMN_GET (`example`, 'qr' AS CHAR),
+						'rofl' AS CHAR
 					),
-					'testagain' AS BLOB
+					'testagain' AS CHAR
 				),
 				'yip',
 				'datworks'

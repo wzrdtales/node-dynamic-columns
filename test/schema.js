@@ -13,18 +13,18 @@ var tests = [
   "AS unsigned integer))))",
 
   "COLUMN_ADD(`testTable`, 'test', 'test', 'arrayone', " +
-  "COLUMN_ADD(COLUMN_GET(`testTable`, 'arrayone' AS BLOB), 'arr', " +
-  "COLUMN_ADD(COLUMN_GET(COLUMN_GET(`testTable`, 'arrayone' AS BLOB), 'arr' " +
-  "AS BLOB), '0', 'arr', '1', 'imma pirate', '2', " +
+  "COLUMN_ADD(COLUMN_GET(`testTable`, 'arrayone' AS CHAR), 'arr', " +
+  "COLUMN_ADD(COLUMN_GET(COLUMN_GET(`testTable`, 'arrayone' AS CHAR), 'arr' " +
+  "AS CHAR), '0', 'arr', '1', 'imma pirate', '2', " +
   "COLUMN_ADD(COLUMN_GET(COLUMN_GET(COLUMN_GET(`testTable`, 'arrayone' " +
-  "AS BLOB), 'arr' AS BLOB), '2' AS BLOB), 'yay', 'ditworks'))), 'another', " +
-  "COLUMN_ADD(COLUMN_GET(`testTable`, 'another' AS BLOB), 'one', " +
+  "AS CHAR), 'arr' AS CHAR), '2' AS CHAR), 'yay', 'ditworks'))), 'another', " +
+  "COLUMN_ADD(COLUMN_GET(`testTable`, 'another' AS CHAR), 'one', " +
   "'yey another one!'), 'qr', COLUMN_ADD(COLUMN_GET(`testTable`, 'qr' " +
-  "AS BLOB), 'test', 'tester', 'rofl', " +
-  "COLUMN_ADD(COLUMN_GET(COLUMN_GET(`testTable`, 'qr' AS BLOB), 'rofl' " +
-  "AS BLOB), 'jaja', 'neinnein', 'testagain', " +
-  "COLUMN_ADD(COLUMN_GET(COLUMN_GET(COLUMN_GET(`testTable`, 'qr' AS BLOB), " +
-  "'rofl' AS BLOB), 'testagain' AS BLOB), 'yip', 'datworks', 'boolean', 1 " +
+  "AS CHAR), 'test', 'tester', 'rofl', " +
+  "COLUMN_ADD(COLUMN_GET(COLUMN_GET(`testTable`, 'qr' AS CHAR), 'rofl' " +
+  "AS CHAR), 'jaja', 'neinnein', 'testagain', " +
+  "COLUMN_ADD(COLUMN_GET(COLUMN_GET(COLUMN_GET(`testTable`, 'qr' AS CHAR), " +
+  "'rofl' AS CHAR), 'testagain' AS CHAR), 'yip', 'datworks', 'boolean', 1 " +
   "AS unsigned integer))))",
 
   "COLUMN_CREATE('test', 1 AS unsigned integer)",
@@ -39,7 +39,7 @@ var tests = [
   "COLUMN_ADD(`testTable`, 'test', 'string')",
 
   "COLUMN_ADD(`testTable`, 'test', " +
-  "COLUMN_ADD(COLUMN_GET(`testTable`, 'test' AS BLOB), '0', 1 AS double, " +
+  "COLUMN_ADD(COLUMN_GET(`testTable`, 'test' AS CHAR), '0', 1 AS double, " +
   "'1', 1 AS unsigned integer, '2', 'string'))",
 
   "COLUMN_CREATE('test', 0 AS unsigned integer)",
