@@ -1,6 +1,6 @@
 {
   "name": "dyncol",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A tool to convert JSON schemas to dynamic column queries (like the ones from MariaDB)",
   "main": "lib/index.js",
   "scripts": {
