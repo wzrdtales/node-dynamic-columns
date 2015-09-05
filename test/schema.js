@@ -25,12 +25,29 @@ var tests = [
   "AS BLOB), 'jaja', 'neinnein', 'testagain', " +
   "COLUMN_ADD(COLUMN_GET(COLUMN_GET(COLUMN_GET(`testTable`, 'qr' AS BLOB), " +
   "'rofl' AS BLOB), 'testagain' AS BLOB), 'yip', 'datworks', 'boolean', 1 " +
-  "AS unsigned integer))))"
+  "AS unsigned integer))))",
 
+  "COLUMN_CREATE('test', 1 AS unsigned integer)",
+  "COLUMN_CREATE('test', 12 AS double)",
+  "COLUMN_CREATE('test', 'string')",
+
+  "COLUMN_CREATE('test', COLUMN_CREATE('0', 1 AS double, '1', " +
+  "1 AS unsigned integer, '2', 'string'))",
+
+  "COLUMN_ADD(`testTable`, 'test', 1 AS unsigned integer)",
+  "COLUMN_ADD(`testTable`, 'test', 12 AS double)",
+  "COLUMN_ADD(`testTable`, 'test', 'string')",
+
+  "COLUMN_ADD(`testTable`, 'test', " +
+  "COLUMN_ADD(COLUMN_GET(`testTable`, 'test' AS BLOB), '0', 1 AS double, " +
+  "'1', 1 AS unsigned integer, '2', 'string'))",
+
+  "COLUMN_CREATE('test', 0 AS unsigned integer)",
+  "COLUMN_ADD(`testTable`, 'test', 0 AS unsigned integer)",
 
 ];
 
-lab.experiment( 'schema/', { parallel: false }, function () {
+lab.experiment( 'schema/', { parallel: true }, function () {
 
   lab.experiment( 'create',
   {
@@ -68,6 +85,67 @@ lab.experiment( 'schema/', { parallel: false }, function () {
             done();
         } );
 
+    lab.test( 'returns true if boolean builds as unsigned int 1',
+        {
+            parallel: true
+        }, function ( done )
+        {
+            Code.expect( dyncol.createQuery( { test: true } ) )
+              .equal( tests[2] );
+
+            done();
+        } );
+
+    lab.test( 'returns true if boolean builds as unsigned int 0',
+        {
+            parallel: true
+        }, function ( done )
+        {
+            Code.expect( dyncol.createQuery( { test: false } ) )
+              .equal( tests[10] );
+
+            done();
+        } );
+
+    lab.test( 'returns true if number builds as double',
+        {
+            parallel: true
+        }, function ( done )
+        {
+            Code.expect( dyncol.createQuery( { test: 12 } ) )
+              .equal( tests[3] );
+
+            done();
+        } );
+
+    lab.test( 'returns true if string builds as nothing',
+        {
+            parallel: true
+        }, function ( done )
+        {
+            Code.expect( dyncol.createQuery( { test: 'string' } ) )
+              .equal( tests[4] );
+
+            done();
+        } );
+
+    lab.test( 'returns true if string builds as nothing',
+        {
+            parallel: true
+        }, function ( done )
+        {
+            Code.expect( dyncol.createQuery( { test: [ 1, true, 'string' ] } ) )
+              .equal( tests[5] );
+
+            done();
+        } );
+  } );
+
+  lab.experiment( 'create',
+  {
+      parallel: true
+  }, function () {
+
     lab.test( 'returns true if the nested update query was correctly builded',
         {
             parallel: true
@@ -98,5 +176,61 @@ lab.experiment( 'schema/', { parallel: false }, function () {
 
             done();
         } );
-  } );
+    } );
+
+    lab.test( 'returns true if boolean builds as unsigned int 1',
+        {
+            parallel: true
+        }, function ( done )
+        {
+            Code.expect( dyncol.updateQuery( 'testTable',
+              { test: true } ) ).equal( tests[6] );
+
+            done();
+        } );
+
+
+    lab.test( 'returns true if boolean builds as unsigned int 0',
+        {
+            parallel: true
+        }, function ( done )
+        {
+            Code.expect( dyncol.updateQuery( 'testTable',
+              { test: false } ) ).equal( tests[11] );
+
+            done();
+        } );
+
+    lab.test( 'returns true if number builds as double',
+        {
+            parallel: true
+        }, function ( done )
+        {
+            Code.expect( dyncol.updateQuery( 'testTable',
+              { test: 12 } ) ).equal( tests[7] );
+
+            done();
+        } );
+
+    lab.test( 'returns true if string builds as nothing',
+        {
+            parallel: true
+        }, function ( done )
+        {
+            Code.expect( dyncol.updateQuery( 'testTable',
+              { test: 'string' } ) ).equal( tests[8] );
+
+            done();
+        } );
+
+    lab.test( 'returns true if string builds as nothing',
+        {
+            parallel: true
+        }, function ( done )
+        {
+            Code.expect( dyncol.updateQuery( 'testTable',
+              { test: [ 1, true, 'string' ] } ) ).equal( tests[9] );
+
+            done();
+        } );
 } );
