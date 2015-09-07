@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/wzrdtales/node-dynamic-columns#readme",
   "devDependencies": {
-    "code": "^1.5.0",
-    "lab": "^5.15.2"
+    "code": "^2.0.1",
+    "lab": "^8.0.0"
   }
 }
