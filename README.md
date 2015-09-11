@@ -20,8 +20,8 @@ manipulate the created column with the methods like `COLUMN_ADD`, to add,
 update and delete columns. This library returns the JSON schema transposed
 to the matching `COLUMN_CREATE(...)` SQL query string.
 
-This library gets useless, as soon as MariaDB supports parsing JSON, but
-until we finally have this feature, this library will help you.
+*This library gets useless, as soon as MariaDB supports parsing JSON, but
+until we finally have this feature, this library will help you.*
 
 # API
 
