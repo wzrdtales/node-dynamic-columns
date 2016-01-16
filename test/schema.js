@@ -45,6 +45,10 @@ var tests = [
   "COLUMN_CREATE('test', 0 AS unsigned integer)",
   "COLUMN_ADD(`testTable`, 'test', 0 AS unsigned integer)",
 
+  "COLUMN_ADD(`testTable`, 'test', 'test', 'meisnull', 'NULL', " +
+  "'eq', COLUMN_ADD(COLUMN_GET(`testTable`, 'eq' AS CHAR), " +
+  "'somenullvalue', 'NULL'))"
+
 ];
 
 lab.experiment( 'schema/', { parallel: true }, function () {
@@ -69,7 +73,8 @@ lab.experiment( 'schema/', { parallel: true }, function () {
                   testagain: {
                     yip: 'datworks',
                     boolean: true
-                  }
+                  },
+                  somenullvalue: null
                 }
               },
               another: {
@@ -176,7 +181,25 @@ lab.experiment( 'schema/', { parallel: true }, function () {
 
             done();
         } );
+
+        lab.test( 'returns true if null values are build correctly',
+        {
+          parallel: true
+        }, function ( done )
+        {
+
+          Code.expect( dyncol.updateQuery( 'testTable', {
+            test: 'test',
+            eq: {
+              somenullvalue: undefined
+            },
+            meisnull: null
+          } ) ).equal( tests[12] );
+
+          done();
+        } );
     } );
+
 
     lab.test( 'returns true if boolean builds as unsigned int 1',
         {
