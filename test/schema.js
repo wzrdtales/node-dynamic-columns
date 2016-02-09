@@ -47,7 +47,13 @@ var tests = [
 
   "COLUMN_ADD(`testTable`, 'test', 'test', 'meisnull', 'NULL', " +
   "'eq', COLUMN_ADD(COLUMN_GET(`testTable`, 'eq' AS CHAR), " +
-  "'somenullvalue', 'NULL'))"
+  "'somenullvalue', 'NULL'))",
+
+  "COLUMN_CREATE('test', 'test', 'other', " +
+  "COLUMN_CREATE('nothinginhere', NULL))",
+
+  "COLUMN_CREATE(?, ?, ?, COLUMN_CREATE(?, NULL))",
+  [ 'test', 'test', 'other', 'nothinginhere' ]
 
 ];
 
@@ -57,6 +63,40 @@ lab.experiment( 'schema/', { parallel: true }, function () {
   {
       parallel: true
   }, function () {
+
+    lab.test( 'returns true if the emtpy nested schema was correctly builded',
+        {
+            parallel: true
+        }, function ( done )
+        {
+            Code.expect( dyncol.createQuery( {
+              test: 'test',
+              other: {
+                nothinginhere: []
+              }
+            } ) ).equal( tests[13] );
+
+            done();
+        } );
+
+    lab.test( 'returns true if the emtpy nested schema was correctly builded',
+        {
+            parallel: true
+        }, function ( done )
+        {
+          var array = [];
+
+            Code.expect( dyncol.createQuery( {
+              test: 'test',
+              other: {
+                nothinginhere: []
+              }
+            }, true, array ) ).equal( tests[14] );
+
+            Code.expect( array ).deep.equal( tests[15] );
+
+            done();
+        } );
 
     lab.test( 'returns true if the nested schema query was correctly builded',
         {
@@ -72,7 +112,8 @@ lab.experiment( 'schema/', { parallel: true }, function () {
                   jaja: 'neinnein',
                   testagain: {
                     yip: 'datworks',
-                    boolean: true
+                    boolean: true,
+                    emtpyone: []
                   },
                   somenullvalue: null
                 }
