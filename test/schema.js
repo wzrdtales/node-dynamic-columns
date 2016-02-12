@@ -10,7 +10,7 @@ var tests = [
   "'ditworks'))), 'another', COLUMN_CREATE('one', 'yey another one!'), " +
   "'qr', COLUMN_CREATE('test', 'tester', 'rofl', COLUMN_CREATE('jaja', " +
   "'neinnein', 'testagain', COLUMN_CREATE('yip', 'datworks', 'boolean', 1 " +
-  "AS unsigned integer))))",
+  "AS unsigned integer, 'emtpyone', NULL))))",
 
   "COLUMN_ADD(`testTable`, 'test', 'test', 'arrayone', " +
   "COLUMN_ADD(COLUMN_GET(`testTable`, 'arrayone' AS CHAR), 'arr', " +
