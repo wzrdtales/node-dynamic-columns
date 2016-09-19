@@ -49,7 +49,7 @@ var dyncol = require('dyncol');
 
 var schema = {
   user: {
-    uuid: 122
+    uuid: 122,
     name: 'test'
   },
   activated: true
