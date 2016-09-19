@@ -93,7 +93,7 @@ lab.experiment( 'schema/', { parallel: true }, function () {
               }
             }, true, array ) ).equal( tests[14] );
 
-            Code.expect( array ).deep.equal( tests[15] );
+            Code.expect( array ).to.equal( tests[15] );
 
             done();
         } );
